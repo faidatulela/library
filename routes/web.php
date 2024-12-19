@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController; 
+use App\Http\Controllers\StudentController;
 
 Route::get('/login', function () {
     return view('login');
@@ -19,9 +20,6 @@ Route::get('/report_student', function () {
 //     return view('books');
 // });
 
-Route::get('/student', function () {
-    return view('student');
-});
 
 Route::get('/transaction', function () {
     return view('transaction');
@@ -36,4 +34,5 @@ route::post('/books', [BookController::class, 'store'])->name('add-book');
 route::get('/books/{book}', [BookController::class, 'edit'])->name('edit-book');
 route::delete('/books/{book}', [BookController::class, 'destroy'])->name('delete-book');
 route::put('/books/{book}', [BookController::class, 'update'])->name('update-book');
-Route::get('/student', [BookController::class, 'index'])->name('students');
+
+Route::resource('/student', StudentController::class);

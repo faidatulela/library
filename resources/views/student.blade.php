@@ -143,11 +143,11 @@
         <div class="w-full max-w-7xl bg-white shadow-lg rounded-lg mt-6 p-6">
           <div class="flex justify-between items-center mb-4">
             <h2 class="text-lg font-semibold text-gray-900">Student List</h2>
-            <button 
+            <a href="{{ route('student.create') }}"
               class="bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300"
-              onclick="addNewData()">
+              >
               Add New Student
-            </button>
+            </a>
           </div>
           <table class="table-auto w-full border-collapse border border-gray-200">
             <thead>
@@ -166,16 +166,22 @@
                     <td class="border border-gray-300 px-4 py-2">{{ $student->class }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ $student->contact }}</td>
                     <td class="border border-gray-300 px-4 py-2">
-                     <button 
+                     <a href="{{ route('student.edit', $student) }}"
                         class="bg-green-500 text-white font-medium px-3 py-1 rounded-lg hover:bg-green-400"
                         onclick="editData(2)">
                         Edit
-                      </button>
-                      <button 
+                      </a>
+
+                      <form action="{{ route('student.destroy', $student) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button 
                         class="bg-red-500 text-white font-medium px-3 py-1 rounded-lg hover:bg-red-400"
-                        onclick="deleteData(2)">
+                        type="submit">
                         Delete
-                      </button></td>
+                      </button>
+                      </form>
+                   </td>
                   </tr>
                   <tr>
                     <td class="border border-gray-300 px-4 py-2">2</td>
