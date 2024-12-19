@@ -183,12 +183,6 @@
                       </form>
                    </td>
                   </tr>
-                  <tr>
-                    <td class="border border-gray-300 px-4 py-2">2</td>
-                    <td class="border border-gray-300 px-4 py-2">Lala</td>
-                    <td class="border border-gray-300 px-4 py-2">087684846577</td>
-                    <td class="border border-gray-300 px-4 py-2"></td>
-                  </tr>
                   @endforeach
             </tbody>
           </table>
