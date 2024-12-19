@@ -32,4 +32,5 @@ Route::get('/form_add_book', function () {
 });
 
 Route::get('/books', [BookController::class, 'index'])->name('books');
+route::post('/books', [BookController::class, 'store'])->name('add-book');
 Route::get('/student', [BookController::class, 'index'])->name('students');
