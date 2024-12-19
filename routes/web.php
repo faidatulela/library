@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookController; 
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\StudentController;
 
 Route::get('/login', function () {
     return view('login');
@@ -32,4 +33,4 @@ Route::get('/form_add_book', function () {
 });
 
 Route::get('/books', [BookController::class, 'index'])->name('books');
-Route::get('/student', [BookController::class, 'index'])->name('students');
+Route::get('/student', [StudentController::class, 'index'])->name('students');
