@@ -33,4 +33,5 @@ Route::get('/form_add_book', function () {
 
 Route::get('/books', [BookController::class, 'index'])->name('books');
 route::post('/books', [BookController::class, 'store'])->name('add-book');
+route::delete('/books/{book}', [BookController::class, 'destroy'])->name('delete-book');
 Route::get('/student', [BookController::class, 'index'])->name('students');

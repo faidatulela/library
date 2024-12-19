@@ -161,7 +161,7 @@
             <tbody>
               @foreach ($books as $book)
                   <tr>
-                    <td class="border border-gray-300 px-4 py-2">{{ $book->id }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $loop->iteration }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ $book->title }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ $book->author }}</td>
                     <td class="border border-gray-300 px-4 py-2">
@@ -170,11 +170,16 @@
                         onclick="editData(2)">
                         Edit
                       </button>
-                      <button 
+                      <form action="{{ route('delete-book', $book) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button 
+                          type="submit"
                         class="bg-red-500 text-white font-medium px-3 py-1 rounded-lg hover:bg-red-400"
-                        onclick="deleteData(2)">
+                        >
                         Delete
                       </button>
+                      </form>
                     </td>
                   </tr>
               @endforeach

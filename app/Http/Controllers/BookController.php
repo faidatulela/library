@@ -10,7 +10,7 @@ class BookController extends Controller
     public function index()
     {
         // Mengambil semua data buku dari database
-        $books = Book::all();
+        $books = Book::get();
 
         // Mengirimkan data ke view
         return view('books', ['books' => $books]);
@@ -29,5 +29,12 @@ class BookController extends Controller
         ]);
 
         return redirect()->route('books')->with('success', 'Book added successfully!');
+    }
+
+    public function destroy(Book $book)
+    {
+        $book->delete();
+
+        return redirect()->route('books')->with('success', 'Book deleted successfully!');
     }
 }
