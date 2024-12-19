@@ -22,12 +22,13 @@
   <main>
     <div class="min-h-screen bg-gray-100 flex items-start justify-center">
       <div class="w-full max-w-7xl bg-white shadow-lg rounded-lg mt-6 p-6">
-        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Add Books</h2>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Edit Book</h2>
         <!-- Form begins here -->
-        <form action="{{ route('add-book') }}" method="POST">
+        <form action="{{ route('update-book', $book->id) }}" method="POST">
           @csrf
+          @method('PUT') <!-- Use PUT method for updating -->
           
-          <!-- Nama Buku -->
+          <!-- Book Name -->
           <div class="mb-4">
             <label for="bookName" class="block text-sm font-medium text-gray-700">Book</label>
             <input 
@@ -35,7 +36,7 @@
               id="bookName" 
               name="bookName" 
               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500" 
-              value="{{ old('bookName') }}" 
+              value="{{ old('bookName', $book->title) }}" 
               required 
               placeholder="Enter book name"
             />
@@ -44,7 +45,7 @@
             @enderror
           </div>
 
-          <!-- Penulis -->
+          <!-- Author -->
           <div class="mb-4">
             <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
             <input 
@@ -52,7 +53,7 @@
               id="author" 
               name="author" 
               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500" 
-              value="{{ old('author') }}" 
+              value="{{ old('author', $book->author) }}" 
               required 
               placeholder="Enter author name"
             />
@@ -66,7 +67,7 @@
             <button 
               type="submit" 
               class="bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300">
-              Add Book
+              Update Book
             </button>
           </div>
         </form>

@@ -15,48 +15,65 @@
 
   <header class="bg-white shadow">
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold tracking-tight text-gray-900">Library App</h1>
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900">Student Management</h1>
     </div>
   </header>
 
   <main>
     <div class="min-h-screen bg-gray-100 flex items-start justify-center">
       <div class="w-full max-w-7xl bg-white shadow-lg rounded-lg mt-6 p-6">
-        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Add Books</h2>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Add Student</h2>
         <!-- Form begins here -->
-        <form action="{{ route('add-book') }}" method="POST">
+        <form action="{{ route('student.store') }}" method="POST">
           @csrf
           
-          <!-- Nama Buku -->
+          <!-- Student Name -->
           <div class="mb-4">
-            <label for="bookName" class="block text-sm font-medium text-gray-700">Book</label>
+            <label for="studentName" class="block text-sm font-medium text-gray-700">Student Name</label>
             <input 
               type="text" 
-              id="bookName" 
-              name="bookName" 
+              id="studentName" 
+              name="studentName" 
               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500" 
-              value="{{ old('bookName') }}" 
+              value="{{ old('studentName') }}" 
               required 
-              placeholder="Enter book name"
+              placeholder="Enter student's name"
             />
-            @error('bookName')
+            @error('studentName')
               <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
           </div>
 
-          <!-- Penulis -->
+          <!-- Class -->
           <div class="mb-4">
-            <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
+            <label for="class" class="block text-sm font-medium text-gray-700">Class</label>
             <input 
               type="text" 
-              id="author" 
-              name="author" 
+              id="class" 
+              name="class" 
               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500" 
-              value="{{ old('author') }}" 
+              value="{{ old('class') }}" 
               required 
-              placeholder="Enter author name"
+              placeholder="Enter class"
             />
-            @error('author')
+            @error('class')
+              <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
+          </div>
+
+          <!-- Contact -->
+          <div class="mb-4">
+            <label for="contact" class="block text-sm font-medium text-gray-700">Contact</label>
+            <input 
+              type="text" 
+              id="contact" 
+              name="contact" 
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500" 
+              value="{{ old('contact') }}" 
+              required 
+              placeholder="Enter contact number"
+            />
+            @error('contact')
               <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
           </div>
@@ -66,7 +83,7 @@
             <button 
               type="submit" 
               class="bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300">
-              Add Book
+              Add Student
             </button>
           </div>
         </form>
