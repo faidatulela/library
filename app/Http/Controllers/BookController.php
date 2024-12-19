@@ -31,6 +31,27 @@ class BookController extends Controller
         return redirect()->route('books')->with('success', 'Book added successfully!');
     }
 
+    public function edit(Book $book) 
+    {
+        return view('form_edit_book', ['book' => $book]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'bookName' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+        ]);
+
+        $book = Book::findOrFail($id);
+        $book->update([
+            'title' => $validated['bookName'],
+            'author' => $validated['author'],
+        ]);
+
+        return redirect()->route('books')->with('success', 'Book updated successfully');
+    }
+
     public function destroy(Book $book)
     {
         $book->delete();
