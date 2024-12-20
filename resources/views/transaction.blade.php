@@ -143,11 +143,11 @@
           <div class="w-full max-w-7xl bg-white shadow-lg rounded-lg mt-6 p-6">
             <div class="flex justify-between items-center mb-4">
               <h2 class="text-lg font-semibold text-gray-900">Transaction Books List</h2>
-              <button 
+              <a href="{{ route('transaction.create') }}"
                 class="bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300"
                 onclick="addNewData()">
                 Add New Transaction
-              </button>
+              </a>
             </div>
             <table class="table-auto w-full border-collapse border border-gray-200">
                 <thead>

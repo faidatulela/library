@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController; 
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TransactionController;
 
 Route::get('/report_student', function () {
     return view('report_student');
@@ -23,6 +24,7 @@ route::delete('/books/{book}', [BookController::class, 'destroy'])->name('delete
 route::put('/books/{book}', [BookController::class, 'update'])->name('update-book');
 
 Route::resource('/student', StudentController::class);
+Route::resource('/transaction', TransactionController::class);
 
 Route::get('/login', function () {
     return view('login');
