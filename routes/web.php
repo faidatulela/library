@@ -36,3 +36,24 @@ route::delete('/books/{book}', [BookController::class, 'destroy'])->name('delete
 route::put('/books/{book}', [BookController::class, 'update'])->name('update-book');
 
 Route::resource('/student', StudentController::class);
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::post('/login', function (\Illuminate\Http\Request $request) {
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->intended('/home');
+    }
+
+    return back()->withErrors([
+        'email' => 'Email atau password salah.',
+    ]);
+});
+
+Route::get('/home', function () {
+    return view('home');
+})->middleware('auth')->name('home');
