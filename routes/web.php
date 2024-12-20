@@ -4,22 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController; 
 use App\Http\Controllers\StudentController;
 
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::get('/home', function () {
-    return view('home');
-});
-
 Route::get('/report_student', function () {
     return view('report_student');
 });
-
-// Route::get('/books', function () {
-//     return view('books');
-// });
-
 
 Route::get('/transaction', function () {
     return view('transaction');
